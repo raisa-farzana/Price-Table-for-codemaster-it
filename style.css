@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: white;
+    padding: 50px 20px;
+    line-height: 1.6;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #01AEF2, #00C7F0, #00DCD8, #00F0DA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+.pricing-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    transition: all 0.3s ease;
+}
+
+.pricing-card.basic::before {
+    background: linear-gradient(90deg, #01AEF2, #00C7F0);
+}
+
+.pricing-card.standard::before {
+    background: linear-gradient(90deg, #00C7F0, #00DCD8);
+}
+
+.pricing-card.premium::before {
+    background: linear-gradient(90deg, #00DCD8, #00F0DA);
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card:hover::before {
+    height: 100%;
+    opacity: 0.05;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-header p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.basic .price {
+    background: linear-gradient(135deg, #01AEF2, #00C7F0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.standard .price {
+    background: linear-gradient(135deg, #00C7F0, #00DCD8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.premium .price {
+    background: linear-gradient(135deg, #00DCD8, #00F0DA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.features li {
+    padding: 12px 0;
+    position: relative;
+    padding-left: 30px;
+    color: #555;
+}
+
+.features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: white;
+}
+
+.basic .features li::before {
+    background: linear-gradient(135deg, #01AEF2, #00C7F0);
+}
+
+.standard .features li::before {
+    background: linear-gradient(135deg, #00C7F0, #00DCD8);
+}
+
+.premium .features li::before {
+    background: linear-gradient(135deg, #00DCD8, #00F0DA);
+}
+
+.cta-button {
+    width: 100%;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.basic .cta-button {
+    background: linear-gradient(135deg, #01AEF2, #00C7F0);
+}
+
+.standard .cta-button {
+    background: linear-gradient(135deg, #00C7F0, #00DCD8);
+}
+
+.premium .cta-button {
+    background: linear-gradient(135deg, #00DCD8, #00F0DA);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #00C7F0, #00DCD8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transform: rotate(10deg);
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .pricing-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .pricing-card {
+        padding: 30px 20px;
+    }
+}
