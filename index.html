@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Pricing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            padding: 50px 20px;
+            line-height: 1.6;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #01AEF2, #00C7F0, #00DCD8, #00F0DA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .pricing-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.basic::before {
+            background: linear-gradient(90deg, #01AEF2, #00C7F0);
+        }
+
+        .pricing-card.standard::before {
+            background: linear-gradient(90deg, #00C7F0, #00DCD8);
+        }
+
+        .pricing-card.premium::before {
+            background: linear-gradient(90deg, #00DCD8, #00F0DA);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .card-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-header p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .basic .price {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .standard .price {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .premium .price {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .features li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            color: #555;
+        }
+
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+        }
+
+        .basic .features li::before {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+        }
+
+        .standard .features li::before {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+        }
+
+        .premium .features li::before {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+        }
+
+        .cta-button {
+            width: 100%;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .basic .cta-button {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+        }
+
+        .standard .cta-button {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+        }
+
+        .premium .cta-button {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transform: rotate(10deg);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .pricing-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-container">
+        <div class="pricing-header">
+            <h1>Web Development Pricing</h1>
+            <p>Choose the perfect plan for your business needs. Professional web development services tailored to help your business grow online.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card basic">
+                <div class="card-header">
+                    <h3>Basic</h3>
+                    <p>Perfect for small businesses and startups</p>
+                </div>
+                <div class="price">$999</div>
+                <div class="price-period">One-time payment</div>
+                <ul class="features">
+                    <li>Responsive Design (up to 5 pages)</li>
+                    <li>Mobile-First Approach</li>
+                    <li>Basic SEO Optimization</li>
+                    <li>Contact Form Integration</li>
+                    <li>Social Media Links</li>
+                    <li>30 Days Support</li>
+                    <li>SSL Certificate Setup</li>
+                </ul>
+                <button class="cta-button" onclick="selectPlan('basic')">Get Started</button>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="pricing-card standard">
+                <div class="popular-badge">Most Popular</div>
+                <div class="card-header">
+                    <h3>Standard</h3>
+                    <p>Great for growing businesses</p>
+                </div>
+                <div class="price">$1,999</div>
+                <div class="price-period">One-time payment</div>
+                <ul class="features">
+                    <li>Responsive Design (up to 10 pages)</li>
+                    <li>Custom Design & Branding</li>
+                    <li>Advanced SEO Optimization</li>
+                    <li>Content Management System</li>
+                    <li>E-commerce Integration</li>
+                    <li>Google Analytics Setup</li>
+                    <li>60 Days Support</li>
+                    <li>Performance Optimization</li>
+                </ul>
+                <button class="cta-button" onclick="selectPlan('standard')">Get Started</button>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card premium">
+                <div class="card-header">
+                    <h3>Premium</h3>
+                    <p>For enterprises and complex projects</p>
+                </div>
+                <div class="price">$3,999</div>
+                <div class="price-period">One-time payment</div>
+                <ul class="features">
+                    <li>Unlimited Pages</li>
+                    <li>Custom Web Application</li>
+                    <li>Advanced E-commerce Features</li>
+                    <li>Database Integration</li>
+                    <li>API Development</li>
+                    <li>Advanced Security Features</li>
+                    <li>90 Days Support</li>
+                    <li>Monthly Maintenance (3 months)</li>
+                    <li>Priority Support</li>
+                </ul>
+                <button class="cta-button" onclick="selectPlan('premium')">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function selectPlan(plan) {
+            alert(`You selected the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan! We'll be in touch soon to discuss your project.`);
+        }
+
+        // Add smooth scroll animations
+        const cards = document.querySelectorAll('.pricing-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        cards.forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

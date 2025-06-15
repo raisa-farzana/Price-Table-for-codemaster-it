@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Pricing</title>
+    <style>
+        .webdev-pricing-section {
+            font-family: 'Arial', sans-serif;
+            background: white;
+            padding: 50px 20px;
+            line-height: 1.6;
+        }
+
+        .webdev-pricing-container {
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .webdev-pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .webdev-pricing-title {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #01AEF2, #00C7F0, #00DCD8, #00F0DA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .webdev-pricing-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .webdev-pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .webdev-pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .webdev-pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .webdev-pricing-card.webdev-basic-plan::before {
+            background: linear-gradient(90deg, #01AEF2, #00C7F0);
+        }
+
+        .webdev-pricing-card.webdev-standard-plan::before {
+            background: linear-gradient(90deg, #00C7F0, #00DCD8);
+        }
+
+        .webdev-pricing-card.webdev-premium-plan::before {
+            background: linear-gradient(90deg, #00DCD8, #00F0DA);
+        }
+
+        .webdev-pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .webdev-pricing-card:hover::before {
+            height: 100%;
+            opacity: 0.05;
+        }
+
+        .webdev-plan-header {
+            margin-bottom: 30px;
+        }
+
+        .webdev-plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .webdev-plan-description {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .webdev-plan-price {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .webdev-basic-plan .webdev-plan-price {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .webdev-standard-plan .webdev-plan-price {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .webdev-premium-plan .webdev-plan-price {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .webdev-plan-period {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .webdev-plan-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .webdev-plan-features li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            color: #555;
+        }
+
+        .webdev-plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: white;
+        }
+
+        .webdev-basic-plan .webdev-plan-features li::before {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+        }
+
+        .webdev-standard-plan .webdev-plan-features li::before {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+        }
+
+        .webdev-premium-plan .webdev-plan-features li::before {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+        }
+
+        .webdev-plan-button {
+            width: 100%;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+        }
+
+        .webdev-basic-plan .webdev-plan-button {
+            background: linear-gradient(135deg, #01AEF2, #00C7F0);
+        }
+
+        .webdev-standard-plan .webdev-plan-button {
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+        }
+
+        .webdev-premium-plan .webdev-plan-button {
+            background: linear-gradient(135deg, #00DCD8, #00F0DA);
+        }
+
+        .webdev-plan-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .webdev-popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00C7F0, #00DCD8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transform: rotate(10deg);
+        }
+
+        @media (max-width: 768px) {
+            .webdev-pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .webdev-pricing-title {
+                font-size: 2.5rem;
+            }
+            
+            .webdev-pricing-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="webdev-pricing-section">
+        <div class="webdev-pricing-container">
+            <div class="webdev-pricing-header">
+                <h1 class="webdev-pricing-title">Web Development Pricing</h1>
+                <p class="webdev-pricing-subtitle">Choose the perfect plan for your business needs. Professional web development services tailored to help your business grow online.</p>
+            </div>
+
+            <div class="webdev-pricing-grid">
+                <!-- Basic Plan -->
+                <div class="webdev-pricing-card webdev-basic-plan">
+                    <div class="webdev-plan-header">
+                        <h3 class="webdev-plan-name">Basic</h3>
+                        <p class="webdev-plan-description">Perfect for small businesses and startups</p>
+                    </div>
+                    <div class="webdev-plan-price">$999</div>
+                    <div class="webdev-plan-period">One-time payment</div>
+                    <ul class="webdev-plan-features">
+                        <li>Responsive Design (up to 5 pages)</li>
+                        <li>Mobile-First Approach</li>
+                        <li>Basic SEO Optimization</li>
+                        <li>Contact Form Integration</li>
+                        <li>Social Media Links</li>
+                        <li>30 Days Support</li>
+                        <li>SSL Certificate Setup</li>
+                    </ul>
+                    <button class="webdev-plan-button" onclick="selectWebdevPlan('basic')">Get Started</button>
+                </div>
+
+                <!-- Standard Plan -->
+                <div class="webdev-pricing-card webdev-standard-plan">
+                    <div class="webdev-popular-badge">Most Popular</div>
+                    <div class="webdev-plan-header">
+                        <h3 class="webdev-plan-name">Standard</h3>
+                        <p class="webdev-plan-description">Great for growing businesses</p>
+                    </div>
+                    <div class="webdev-plan-price">$1,999</div>
+                    <div class="webdev-plan-period">One-time payment</div>
+                    <ul class="webdev-plan-features">
+                        <li>Responsive Design (up to 10 pages)</li>
+                        <li>Custom Design & Branding</li>
+                        <li>Advanced SEO Optimization</li>
+                        <li>Content Management System</li>
+                        <li>E-commerce Integration</li>
+                        <li>Google Analytics Setup</li>
+                        <li>60 Days Support</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                    <button class="webdev-plan-button" onclick="selectWebdevPlan('standard')">Get Started</button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="webdev-pricing-card webdev-premium-plan">
+                    <div class="webdev-plan-header">
+                        <h3 class="webdev-plan-name">Premium</h3>
+                        <p class="webdev-plan-description">For enterprises and complex projects</p>
+                    </div>
+                    <div class="webdev-plan-price">$3,999</div>
+                    <div class="webdev-plan-period">One-time payment</div>
+                    <ul class="webdev-plan-features">
+                        <li>Unlimited Pages</li>
+                        <li>Custom Web Application</li>
+                        <li>Advanced E-commerce Features</li>
+                        <li>Database Integration</li>
+                        <li>API Development</li>
+                        <li>Advanced Security Features</li>
+                        <li>90 Days Support</li>
+                        <li>Monthly Maintenance (3 months)</li>
+                        <li>Priority Support</li>
+                    </ul>
+                    <button class="webdev-plan-button" onclick="selectWebdevPlan('premium')">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function selectWebdevPlan(plan) {
+            alert(`You selected the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan! We'll be in touch soon to discuss your project.`);
+        }
+
+        // Add smooth scroll animations
+        const webdevCards = document.querySelectorAll('.webdev-pricing-card');
+        const webdevObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        webdevCards.forEach((card) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            webdevObserver.observe(card);
+        });
+    </script>
+</body>
+</html>
